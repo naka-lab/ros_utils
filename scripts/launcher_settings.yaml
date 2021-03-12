@@ -1,0 +1,57 @@
+general:
+  - name: IP設定
+    command: gedit ~/catkin_ws/set_ip.sh; source ~/.bashrc
+  - name: roscore
+    command: roscore
+  - name: rqt_graph
+    command: rqt_graph
+  - name: rqt
+    command: rqt
+
+utils:
+  - name: param設定GUI
+    command: rosrun ros_utils param_setting_gui.py 
+
+vision: 
+  - name: Realsense起動
+    command: roslaunch realsense2_camera rs_rgbd.launch 
+    option: "align_depth:=True"
+  - name: CNN+SVM物体認識
+    command: rosrun ros_vision tabletop_object_recognition.py 
+  - name: 画像保存
+    command: rosrun ros_vision image_saver.py
+  - name: SSD物体認識
+    command: rosrun ros_vision ssd_object_recognition.py
+  - name: ARマーカー認識
+    command: rosrun ros_vision ar_marker_recognition.py
+
+speech:
+  - name: Google音声認識
+    command: roslaunch ros_google_speech google_speech.launch
+    option: 
+
+CRANE X7:
+  - name: CRANE X7起動
+    command: roslaunch crane_x7_bringup demo.launch
+    option: "fake_execution:=false"
+  - name: トルクOn
+    command: rosrun ros_manipulation cranex7_enable_torque.py 1
+  - name: トルクOff
+    command: rosrun ros_manipulation cranex7_enable_torque.py 0
+  - name: キャリブレーション実行
+    command: rosrun ros_manipulation camera_calibration.py
+    option: 0.0 0.0
+
+Turtlebot3:
+  - name: 地図生成
+    command: roslaunch turtlebot3_slam turtlebot3_slam.launch
+    option: ""
+  - name: 地図保存
+    command: rosrun map_server map_saver
+    option: -f ~/map
+  - name: ナビゲーション
+    command: roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+    option: "map_file:=$HOME/map.yaml"
+  - name: キーボード入力
+    command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    option: ""
