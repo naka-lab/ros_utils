@@ -32,7 +32,7 @@ speech:
 
 CRANE X7:
   - name: CRANE X7起動
-    command: roslaunch crane_x7_bringup demo.launch
+    command: sudo chmod 666 /dev/ttyUSB0; roslaunch crane_x7_bringup demo.launch
     option: "fake_execution:=false"
   - name: トルクOn
     command: rosrun ros_manipulation cranex7_enable_torque.py 1
