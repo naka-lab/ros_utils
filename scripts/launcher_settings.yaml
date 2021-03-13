@@ -7,7 +7,13 @@ general:
     command: rqt_graph
   - name: rqt
     command: rqt
-
+  - name: bashrc編集
+    command: gedit ~/.bashrc; source ~/.bashrc
+  - name: gitconfig編集
+    command: gedit ~/.gitconfig
+  - name: aptconf編集
+    command: sudo gedit /etc/apt/apt.conf
+    
 utils:
   - name: param設定GUI
     command: rosrun ros_utils param_setting_gui.py 
