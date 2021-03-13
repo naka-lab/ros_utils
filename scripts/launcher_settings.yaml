@@ -61,3 +61,7 @@ Turtlebot3:
   - name: キーボード入力
     command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
     option: ""
+
+Sciurus17:
+  - name: Sciurus17起動
+    command: roslaunch sciurus17_bringup sciurus17_bringup.launch
