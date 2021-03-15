@@ -1,23 +1,25 @@
 general:
   - name: IP設定
-    command: gedit ~/catkin_ws/set_ip.sh; source ~/.bashrc
+    command: gedit -s ~/catkin_ws/set_ip.sh; source ~/.bashrc
   - name: roscore
     command: roscore
   - name: rqt_graph
     command: rqt_graph
   - name: rqt
     command: rqt
-  - name: bashrc編集
-    command: gedit ~/.bashrc; source ~/.bashrc
-  - name: gitconfig編集
-    command: gedit ~/.gitconfig
-  - name: aptconf編集
-    command: sudo gedit /etc/apt/apt.conf
-    
-utils:
   - name: param設定GUI
     command: rosrun ros_utils param_setting_gui.py 
 
+settings:
+  - name: bashrc編集
+    command: gedit -s ~/.bashrc; source ~/.bashrc
+  - name: gitconfig編集
+    command: gedit -s ~/.gitconfig
+  - name: aptconf編集
+    command: sudo gedit -s /etc/apt/apt.conf
+  - name: 時刻合わせ
+    command: sudo date -s "$( wget -q http://worldtimeapi.org/api/timezone/Asia/Tokyo -O - | grep -oE \"datetime\":\"[^\"]* | sed s/\"datetime\":\"// )"
+    
 vision: 
   - name: Realsense起動
     command: roslaunch realsense2_camera rs_rgbd.launch 
