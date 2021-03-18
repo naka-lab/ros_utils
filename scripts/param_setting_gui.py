@@ -60,9 +60,16 @@ def main():
     print("parameters: ")
     params_all = rosparam.list_params("/")
     for p in params_all:
-        pararent = "/".join(p.split("/")[:-1])
+        split_p = p.split("/")
+        pararent = "/".join(split_p[:-1])
         if pararent=="":
             pararent="/"
+        
+        if len(split_p):
+            if split_p[1] in ("camera", "move_group", "crane_x7", 
+            "robot_description_planning", "robot_description_semantic",
+            "robot_description_kinematics", "roslaunch"):
+                continue
         
         param_dict[pararent].append( p )
         print("  ", pararent, p )
