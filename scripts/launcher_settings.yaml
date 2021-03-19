@@ -32,7 +32,9 @@ vision:
     command: rosrun ros_vision ssd_object_recognition.py
   - name: ARマーカー認識
     command: rosrun ros_vision ar_marker_recognition.py
-
+  - name: OpenPose
+    command: rosrun ros_vision open_pose.py
+    
 speech:
   - name: Google音声認識
     command: roslaunch ros_google_speech google_speech.launch
