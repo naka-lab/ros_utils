@@ -59,6 +59,9 @@ Turtlebot3:
   - name: 地図保存
     command: rosrun map_server map_saver
     option: -f ~/map
+  - name: 地図表示
+    command: rosrun ros_navigation map_viewer.py
+    option: ~/map.yaml
   - name: ナビゲーション
     command: roslaunch turtlebot3_navigation turtlebot3_navigation.launch
     option: "map_file:=$HOME/map.yaml"
