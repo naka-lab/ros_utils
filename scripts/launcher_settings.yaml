@@ -17,6 +17,8 @@ settings:
     command: gedit -s ~/.gitconfig
   - name: aptconf編集
     command: sudo gedit -s /etc/apt/apt.conf
+  - name: condarc編集
+    command: gedit -s ~/.condarc   
   - name: 時刻合わせ
     command: sudo date -s "$( wget -q http://worldtimeapi.org/api/timezone/Asia/Tokyo -O - | grep -oE \"datetime\":\"[^\"]* | sed s/\"datetime\":\"// )"
     
