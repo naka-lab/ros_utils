@@ -43,7 +43,7 @@ class Command():
             command += '"'
 
         print(command)
-        os.system( command )
+        os.system( command.encode("utf8") )
 
 def selection_changed( pname ):
     # 設定を読み込む

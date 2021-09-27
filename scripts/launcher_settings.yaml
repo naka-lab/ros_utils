@@ -74,3 +74,36 @@ Turtlebot3:
 Sciurus17:
   - name: Sciurus17起動
     command: roslaunch sciurus17_bringup sciurus17_bringup.launch
+
+Stretch:
+  - name: Strech driver起動
+    command: ~/catkin_ws/src/ros_stretch/scripts/run_stretch_driver.sh
+    option: ""
+  - name: xboxコントローラ復帰
+    command: /usr/bin/hello_robot_xbox_teleop.sh 
+    option: ""
+  - name: SLAM起動
+    command: roslaunch stretch_navigation mapping.launch
+    option: ""
+  - name: 地図保存
+    command: rosrun map_server map_saver
+    option: "-f $HOME/test"
+  - name: Navigation起動
+    command: roslaunch stretch_navigation navigation.launch 
+    option: "map_yaml:=$HOME/test.yaml"
+  - name: Strecth用ARマーカー認識
+    command: roslaunch ros_stretch  
+    option: ""
+  - name: Realsense起動
+    command: roslaunch realsense2_camera rs_rgbd.launch 
+    option: "align_depth:=True"
+  - name: Strecth用ARマーカー認識
+    command: roslaunch ros_stretch stretch_ar_marker_recognition.launch
+    option: ""
+  - name: Strecth用机上物体認識
+    command: roslaunch ros_stretch stretch_tabletop_object_recognition.launch
+    option: ""
+  - name: StrecthコントロールGUI
+    command: rosrun ros_stretch stretch_controller_gui.py
+    option: ""
+  
