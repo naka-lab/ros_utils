@@ -91,9 +91,9 @@ Stretch:
   - name: Navigation起動
     command: roslaunch stretch_navigation navigation.launch 
     option: "map_yaml:=$HOME/test.yaml"
-  - name: Strecth用ARマーカー認識
-    command: roslaunch ros_stretch  
-    option: ""
+  - name: 地図表示
+    command: rosrun ros_navigation map_viewer.py 
+    option: "~/test.yaml"
   - name: Realsense起動
     command: roslaunch realsense2_camera rs_rgbd.launch 
     option: "align_depth:=True"
