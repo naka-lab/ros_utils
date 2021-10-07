@@ -102,7 +102,7 @@ Stretch:
     option: ""
   - name: Strecth用机上物体認識
     command: roslaunch ros_stretch stretch_tabletop_object_recognition.launch
-    option: ""
+    option: "~/svm_data.sav"
   - name: StrecthコントロールGUI
     command: rosrun ros_stretch stretch_controller_gui.py
     option: ""
