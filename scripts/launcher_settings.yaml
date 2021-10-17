@@ -90,7 +90,7 @@ Stretch:
     option: "-f $HOME/test"
   - name: Navigation起動
     command: roslaunch stretch_navigation navigation.launch 
-    option: "map_yaml:=$HOME/test.yaml"
+    option: "map_yaml:=$HOME/test5.yaml"
   - name: 地図表示
     command: rosrun ros_navigation map_viewer.py 
     option: "~/test.yaml"
@@ -102,7 +102,7 @@ Stretch:
     option: ""
   - name: Strecth用机上物体認識
     command: roslaunch ros_stretch stretch_tabletop_object_recognition.launch
-    option: "svm_model:=$HOME/svm_data.sav"
+    option: "svm_model:=$HOME/svm_data_1015.sav"
   - name: StrecthコントロールGUI
     command: rosrun ros_stretch stretch_controller_gui.py
     option: ""
