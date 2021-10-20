@@ -77,7 +77,7 @@ Sciurus17:
 
 Stretch:
   - name: Strechキャリブレーション
-    command: stretch_robot_home.py
+    command: ~/catkin_ws/src/ros_stretch/scripts/run_stretch_calibration.sh
     option: ""
   - name: Strech driver起動
     command: ~/catkin_ws/src/ros_stretch/scripts/run_stretch_driver.sh
