@@ -76,6 +76,9 @@ Sciurus17:
     command: roslaunch sciurus17_bringup sciurus17_bringup.launch
 
 Stretch:
+  - name: Strechキャリブレーション
+    command: stretch_robot_home.py
+    option: ""
   - name: Strech driver起動
     command: ~/catkin_ws/src/ros_stretch/scripts/run_stretch_driver.sh
     option: ""
