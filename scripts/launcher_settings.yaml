@@ -109,4 +109,6 @@ Stretch:
   - name: StrecthコントロールGUI
     command: rosrun ros_stretch stretch_controller_gui.py
     option: ""
-  
+  - name: バッテリーチェック
+    command: ~/catkin_ws/src/ros_stretch/scripts/run_battery_check.sh 
+    option: ""
