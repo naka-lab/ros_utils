@@ -54,6 +54,23 @@ CRANE X7:
     command: rosrun ros_manipulation camera_calibration.py
     option: 0.0 0.0
 
+Turtlebot2(kobuki):
+  - name: 地図生成
+    command: roslaunch ros_navigation kobuki_slam.launch
+    option: ""
+  - name: 地図保存
+    command: rosrun map_server map_saver
+    option: -f ~/map
+  - name: 地図表示
+    command: rosrun ros_navigation map_viewer.py
+    option: ~/map.yaml
+  - name: ナビゲーション
+    command: roslaunch ros_navigation kobuki_navigation.launch
+    option: "map_file:=$HOME/map.yaml"
+  - name: キーボード入力
+    command: roslaunch ros_navigation kobuki_teleop_key.launch
+    option: ""
+
 Turtlebot3:
   - name: 地図生成
     command: roslaunch turtlebot3_slam turtlebot3_slam.launch
