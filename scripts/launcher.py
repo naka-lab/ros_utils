@@ -25,6 +25,7 @@ is_auto_close.set(True)
 frame_launcher = tk.Frame(root, relief=tk.GROOVE, borderwidth=2)
 parts = []
 
+commands = {}
 
 class Command():
     def __init__(self, name, com, opt ):
@@ -46,16 +47,11 @@ class Command():
         os.system( command.encode("utf8") )
 
 def selection_changed( pname ):
-    # 設定を読み込む
-    with open('launcher_settings.yaml') as file:
-        commands = yaml.safe_load(file)
-
     # 表示されているGUIを消去
     for p in parts:
         p.pack_forget()
 
     for command in commands[pname]:
-
         name = command["name"]
         com = command["command"]
         opt = ""
@@ -68,16 +64,26 @@ def selection_changed( pname ):
         parts.append( frame )
 
         tk.Label(frame, text=name, width=30  ).pack(side="left")
-        opt_entry = tk.Entry(frame, textvariable=tk.StringVar(frame, opt), width=30 )
+        #opt_entry = tk.Entry(frame, textvariable=tk.StringVar(frame, opt), width=30 )
+        opt_entry = tk.Entry(frame, textvariable=command["opt_string"], width=30 )
         opt_entry.pack(side="left")
         tk.Button( frame, text='laucnch', command=Command(name, com, opt_entry) ).pack(side="left")
 
 
-
 def main():
+    # コマンドを読み込み
+    global commands
     with open('launcher_settings.yaml') as file:
         commands = yaml.safe_load(file)
     packages = commands.keys()
+
+    for pack in packages:
+        for com in commands[pack]:
+            name = com["name"]
+            opt = ""
+            if "option" in com and com["option"]!=None:
+                opt = com["option"]
+            com["opt_string"] = tk.StringVar(root, opt)
 
     frame = tk.Frame(root)
     frame.pack()
