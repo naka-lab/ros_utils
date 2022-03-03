@@ -3,15 +3,11 @@
 from __future__ import print_function, unicode_literals
 import rospy
 import rosparam
-from collections import defaultdict
 import tkinter as tk
 import yaml
 import os
 
 os.chdir( os.path.abspath(os.path.dirname(__file__)))
-
-# パラメータ名保存用dict
-param_dict = defaultdict(list)
 
 # GUIパーツ
 root = tk.Tk()
