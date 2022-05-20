@@ -53,6 +53,10 @@ CRANE X7:
   - name: キャリブレーション実行
     command: rosrun ros_manipulation camera_calibration.py
     option: 0.0 0.0
+  - name: キャリブレーション結果再発行
+    command: rosrun ros_manipulation camera_calibration.py pub
+    option: 
+
 
 Turtlebot2(kobuki):
   - name: 地図生成
