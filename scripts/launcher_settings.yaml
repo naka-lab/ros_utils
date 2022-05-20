@@ -36,7 +36,10 @@ vision:
     command: rosrun ros_vision ar_marker_recognition.py
   - name: OpenPose
     command: rosrun ros_vision open_pose.py
-    
+  - name: Webカメラ
+    command: rosrun ros_vision webcam_pc_dummy_sender.py
+
+
 speech:
   - name: Google音声認識
     command: roslaunch ros_google_speech google_speech.launch
