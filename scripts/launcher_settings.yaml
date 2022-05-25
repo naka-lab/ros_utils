@@ -115,7 +115,7 @@ Stretch:
     command: roslaunch stretch_navigation navigation.launch 
     option: "map_yaml:=$HOME/test5.yaml"
   - name: Navigation（複数map）
-    command:  roslaunch ros_navigation stretch_navigation.launch 
+    command:  roslaunch ros_navigation stretch_navigation_fast.launch 
     option: "map_file_loc:=$HOME/map.yaml map_file_pp:=$HOME/map_pp.yaml"
   - name: 地図表示
     command: rosrun ros_navigation map_viewer.py 
