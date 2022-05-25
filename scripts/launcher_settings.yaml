@@ -98,6 +98,18 @@ Turtlebot3:
     command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
     option: ""
 
+Map:
+  - name: 地図保存
+    command: rosrun map_server map_saver
+    option: -f ~/map
+  - name: 地図表示
+    command: rosrun ros_navigation map_viewer.py
+    option: ~/map.yaml
+  - name: 地図編集
+    command: rosrun ros_navigation map_editor.py
+    option: ~/map.yaml
+
+
 Sciurus17:
   - name: Sciurus17起動
     command: roslaunch sciurus17_bringup sciurus17_bringup.launch
