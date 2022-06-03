@@ -159,4 +159,7 @@ Stretch:
     option: 5
   - name: カメラキャリブレーション結果再発行
     command: rosrun ros_stretch global_camera_calibration.py pub
+  - name: 自己位置推定実行
+    command: rosrun ros_navigation localize.py 
+    option: 50
 
