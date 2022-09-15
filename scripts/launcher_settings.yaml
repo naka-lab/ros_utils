@@ -92,7 +92,7 @@ Turtlebot3:
     command: rosrun ros_navigation map_viewer.py
     option: ~/map.yaml
   - name: ナビゲーション
-    command: roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+    command: roslaunch ros_navigation turtlebot3_navigation.launch
     option: "map_file:=$HOME/map.yaml"
   - name: キーボード入力
     command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
