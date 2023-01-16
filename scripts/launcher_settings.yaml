@@ -163,3 +163,14 @@ Stretch:
     command: rosrun ros_navigation localize.py 
     option: 50
 
+UR3:
+  - name: 起動
+    command: roslaunch ros_ur3 ur3_and_gripper.launch
+    option: robot_ip:=192.168.1.66
+  - name: モーション作成GUI
+    command: rosrun ros_ur3 ur3_teaching.py
+  - name: モーション再生
+    command: rosrun ros_ur3 ur3_play.py
+    option: ~/motion.json
+    
+
