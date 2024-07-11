@@ -183,4 +183,7 @@ Kachaka:
   - name: キーボード入力
     command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
     option: ""
+  - name: Service Caller
+    command: rosrun ros_kachaka service_caller.py
+    option: ""
   
