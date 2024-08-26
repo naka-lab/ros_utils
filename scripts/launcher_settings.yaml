@@ -38,6 +38,18 @@ vision:
     command: rosrun ros_vision open_pose.py
   - name: Webカメラ
     command: rosrun ros_vision webcam_pc_dummy_sender.py
+  - name: DLIB物体検出-画像キャプチャ
+    cmmand: rosrun ros_dlib_object_detector image_capture.py
+    option: ~/object_detector/imgs
+  - name: DLIB物体検出-アノテーション
+    cmmand: rosrun ros_dlib_object_detector annotate_rect.py 
+    option: ~/object_detector/imgs
+  - name: DLIB物体検出-学習
+    cmmand: rosrun ros_dlib_object_detector train_detector.py 
+    option: ~/object_detector/imgs  ~/object_detector/model.svm
+  - name: DLIB物体検出-検出ノード実行
+    cmmand: rosrun ros_dlib_object_detector  object_detector.py   
+    option: ~/object_detector/model.svm
 
 
 speech:
