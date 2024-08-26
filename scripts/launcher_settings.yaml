@@ -173,4 +173,17 @@ UR3:
     command: rosrun ros_ur3 ur3_play.py
     option: ~/motion.json
     
-
+Kachaka:
+  - name: 起動
+    command: rosrun ros_kachaka kachaka_core.py
+    option: 192.168.1.75
+  - name: Rviz
+    command: roslaunch ros_kachaka kachaka_rviz.launch
+    option: 
+  - name: キーボード入力
+    command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    option: ""
+  - name: Service Caller
+    command: rosrun ros_kachaka service_caller.py
+    option: ""
+  
