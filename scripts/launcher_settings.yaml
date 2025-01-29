@@ -38,6 +38,18 @@ vision:
     command: rosrun ros_vision open_pose.py
   - name: Webカメラ
     command: rosrun ros_vision webcam_pc_dummy_sender.py
+  - name: DLIB物体検出-画像キャプチャ
+    command: rosrun ros_dlib_object_detector image_capture.py
+    option: ~/object_detector/imgs
+  - name: DLIB物体検出-アノテーション
+    command: rosrun ros_dlib_object_detector annotate_rect.py 
+    option: ~/object_detector/imgs
+  - name: DLIB物体検出-学習
+    command: rosrun ros_dlib_object_detector train_detector.py 
+    option: ~/object_detector/imgs  ~/object_detector/model.svm
+  - name: DLIB物体検出-検出ノード実行
+    command: rosrun ros_dlib_object_detector  object_detector.py   
+    option: ~/object_detector/model.svm
 
 
 speech:
@@ -92,7 +104,7 @@ Turtlebot3:
     command: rosrun ros_navigation map_viewer.py
     option: ~/map.yaml
   - name: ナビゲーション
-    command: roslaunch turtlebot3_navigation turtlebot3_navigation.launch
+    command: roslaunch ros_navigation turtlebot3_navigation.launch
     option: "map_file:=$HOME/map.yaml"
   - name: キーボード入力
     command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
@@ -163,3 +175,27 @@ Stretch:
     command: rosrun ros_navigation localize.py 
     option: 50
 
+UR3:
+  - name: 起動
+    command: roslaunch ros_ur3 ur3_and_gripper.launch
+    option: robot_ip:=192.168.2.2
+  - name: モーション作成GUI
+    command: rosrun ros_ur3 ur3_teaching.py
+  - name: モーション再生
+    command: rosrun ros_ur3 ur3_play.py
+    option: ~/motion.json
+    
+Kachaka:
+  - name: 起動
+    command: rosrun ros_kachaka kachaka_core.py
+    option: 192.168.1.75
+  - name: Rviz
+    command: roslaunch ros_kachaka kachaka_rviz.launch
+    option: 
+  - name: キーボード入力
+    command: roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    option: ""
+  - name: Service Caller
+    command: rosrun ros_kachaka service_caller.py
+    option: ""
+  
