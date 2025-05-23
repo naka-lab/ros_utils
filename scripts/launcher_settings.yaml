@@ -199,3 +199,23 @@ Kachaka:
     command: rosrun ros_kachaka service_caller.py
     option: ""
   
+CobotMagic:
+  - name: アームCAN設定（起動時のみ）
+    command: cd ~/cobot_magic/Piper_ros_private-ros-noetic/; bash can_config.sh
+  - name: アーム起動（リーダーフォロワー）
+    command: roslaunch piper start_ms_piper.launch 
+    option: mode:=0 auto_enable:=false
+  - name: アーム起動（自律制御）
+    command: roslaunch piper start_ms_piper.launch
+    option:  mode:=1 auto_enable:=true
+  - name: カメラ起動
+    command: roslaunch astra_camera multi_camera.launch
+  - name: データ収集
+    command: conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
+    option: --dataset_dir ~/data/test/ --max_timestep 300 --episode_idx 0
+  - name: 学習スクリプト起動
+    command: conda activate aloha; cd ~/cobot_magic/aloha_devel/; python act/train.py 
+    option: --dataset_dir ~/data/test/ --ckpt_dir ~/train/test/ --batch_size 4 --num_epochs 5000 --num_episodes 100
+  - name: 推論スクリプト起動
+    command: conda activate aloha; cd ~/cobot_magic/aloha_devel/; python act/inference.py
+    option: --ckpt_dir ~/train/test/

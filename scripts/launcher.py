@@ -61,7 +61,7 @@ def selection_changed( pname ):
 
         tk.Label(frame, text=name, width=30  ).pack(side="left")
         #opt_entry = tk.Entry(frame, textvariable=tk.StringVar(frame, opt), width=30 )
-        opt_entry = tk.Entry(frame, textvariable=command["opt_string"], width=30 )
+        opt_entry = tk.Entry(frame, textvariable=command["opt_string"], width=60 )
         opt_entry.pack(side="left")
         tk.Button( frame, text='laucnch', command=Command(name, com, opt_entry) ).pack(side="left")
 
