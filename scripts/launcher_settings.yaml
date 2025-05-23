@@ -211,15 +211,15 @@ CobotMagic:
   - name: カメラ起動
     command: roslaunch astra_camera multi_camera.launch
   - name: データ収集
-    command: conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
+    command: source /home/agilex/miniconda3/etc/profile.d/conda.sh; conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
     option: --dataset_dir ~/data/test/ --max_timestep 300 --episode_idx 0
   - name: 台車CAN設定（初回起動時のみ）
     command: rosrun tracer_bringup setup_can2usb.bash
   - name: 台車起動
     command: rosrun tracer_bringup bringup_can2usb.bash; roslaunch tracer_bringup tracer_robot_base.launch
   - name: 学習スクリプト起動
-    command: conda activate aloha; cd ~/cobot_magic/aloha_devel/; python act/train.py 
+    command: source /home/agilex/miniconda3/etc/profile.d/conda.sh; conda activate aloha; cd ~/cobot_magic/aloha-devel/; python act/train.py 
     option: --dataset_dir ~/data/test/ --ckpt_dir ~/train/test/ --batch_size 4 --num_epochs 5000 --num_episodes 100
   - name: 推論スクリプト起動
-    command: conda activate aloha; cd ~/cobot_magic/aloha_devel/; python act/inference.py
+    command: source /home/agilex/miniconda3/etc/profile.d/conda.sh; conda activate aloha; cd ~/cobot_magic/aloha-devel/; python act/inference.py
     option: --ckpt_dir ~/train/test/
