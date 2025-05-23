@@ -200,7 +200,7 @@ Kachaka:
     option: ""
   
 CobotMagic:
-  - name: アームCAN設定（起動時のみ）
+  - name: アームCAN設定（初回起動時のみ）
     command: cd ~/cobot_magic/Piper_ros_private-ros-noetic/; bash can_config.sh
   - name: アーム起動（リーダーフォロワー）
     command: roslaunch piper start_ms_piper.launch 
@@ -213,6 +213,10 @@ CobotMagic:
   - name: データ収集
     command: conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
     option: --dataset_dir ~/data/test/ --max_timestep 300 --episode_idx 0
+  - name: 台車CAN設定（初回起動時のみ）
+    command: rosrun tracer_bringup setup_can2usb.bash
+  - name: 台車起動
+    command: rosrun tracer_bringup bringup_can2usb.bash; roslaunch tracer_bringup tracer_robot_base.launch
   - name: 学習スクリプト起動
     command: conda activate aloha; cd ~/cobot_magic/aloha_devel/; python act/train.py 
     option: --dataset_dir ~/data/test/ --ckpt_dir ~/train/test/ --batch_size 4 --num_epochs 5000 --num_episodes 100
