@@ -213,7 +213,7 @@ CobotMagic:
   - name: 左右D405+フロントAstraカメラ起動
     command: roslaunch astra_camera front_astra_cm217.launch & roslaunch realsense2_camera double_d405_astra_cm217.launch
   - name: カメラ映像確認
-    command: rqt --perspective-file ~/cobot_magic/camera_ws/src/config/d405_astra.perspective
+    command: rqt --perspective-file ~/cobot_magic/camera_ws/src/config/d405_astra_cm217.perspective
   - name: データ収集
     command: source /home/agilex/miniconda3/etc/profile.d/conda.sh; conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
     option: --dataset_dir ~/data/test/ --max_timestep 300 --episode_idx 0
