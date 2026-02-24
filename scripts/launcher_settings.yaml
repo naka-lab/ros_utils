@@ -208,12 +208,16 @@ CobotMagic:
   - name: アーム起動（自律制御）
     command: roslaunch piper start_ms_piper.launch
     option:  mode:=1 auto_enable:=true
-  - name: Astraカメラ起動
-    command: roslaunch astra_camera multi_camera.launch
-  - name: 左右D405+フロントAstraカメラ起動
-    command: roslaunch astra_camera front_astra_cm217.launch & roslaunch realsense2_camera double_d405_astra_cm217.launch
-  - name: カメラ映像確認
-    command: rqt --perspective-file ~/cobot_magic/camera_ws/src/config/d405_astra_cm217.perspective
+  - name: "Original Camera"
+    command: "roslaunch astra_camera multi_camera.launch"
+  - name: "D405 + Astra Camera"
+    command: "roslaunch astra_camera front_astra_cm217.launch & roslaunch realsense2_camera double_d405_astra_cm217.launch"
+  - name: "2Wrist + Front + Top"
+    command: "roslaunch astra_camera front_top_astra_cm217.launch & roslaunch realsense2_camera double_d405_astra_cm217.launch"
+  - name: "3 Image View"
+    command: "rqt --perspective-file ~/cobot_magic/camera_ws/src/config/d405_astra_cm217.perspective"
+  - name: "4 Image View"
+    command: "rqt --perspective-file ~/cobot_magic/camera_ws/src/config/2wrist_front_top_cm217.perspective"
   - name: データ収集
     command: source /home/agilex/miniconda3/etc/profile.d/conda.sh; conda activate aloha; cd ~/cobot_magic/collect_data/; python collect_data.py 
     option: --dataset_dir ~/data/test/ --max_timestep 300 --episode_idx 0
